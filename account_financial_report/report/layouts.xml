@@ -34,14 +34,15 @@ table.basic_table{
     text-align:left;
 }
 .celdaTituloTabla{
-    font-size:10pt;
+    font-size:7pt;
     text-align:left;
     font-family:Arial,Helvetica,sans-serif;
     border-collapse: separate;
+    font-weight:bold;
 }
 
 .celdaTotal{
-    font-size:8pt;
+    font-size:7pt;
     font-style:normal;
     font-family: FreeMono;
     text-align:right;
@@ -50,22 +51,16 @@ table.basic_table{
 
 .celdaDetailTitulo{
     font-style:italic;
-    font-size:8pt;
+    font-size:7pt;
     text-align:left;
     font-weight:bold;
     font-family:Arial,Helvetica,sans-serif;
 }
 
 .celdaDetail{
-    font-size:8pt;
+    font-size:7pt;
     font-family: monospace;
     text-align:right;
-}
-
-.celdaAbstractTotal{
-    font-size:8pt;
-    text-align:left;
-    font-family:Arial,Helvetica,sans-serif;
 }
 
 </template>
@@ -94,9 +89,9 @@ table.basic_table{
                   <table style="width: 100%; text-align:center;" id="table_header">
                       <tr><td><h4><strong><span t-field="o.company_id.name"/></strong></h4></td></tr>
                       <tr><td>
-                        <strong>VAT:</strong>: <span t-esc="get_vat_by_country(data['form'])"/>
+                        <strong>VAT:</strong><span t-esc="get_vat_by_country(data['form'])"/>
                       </td></tr>
-                      <tr><td>(Expressed in <span t-esc="exchange_name(data['form'])"/>)</td></tr>
+                      <tr><td>( Expressed in <span t-esc="exchange_name(data['form'])"/> )</td></tr>
                       <tr><td><span t-esc="get_month(data['form'])"/></td></tr>
                   </table>
               </td>
@@ -112,7 +107,7 @@ table.basic_table{
 <template id="account_financial_report.external_layout_footer">
     <div class="footer">
         <div class="text-right" style="border-top: 1px solid lightGrey;">
-            <ul class="list-inline">
+            <ul class="list-inline" style="font-size:6pt;">
                 <li></li>
                 <li>&amp;bull;</li>
                 <li>Page:</li>

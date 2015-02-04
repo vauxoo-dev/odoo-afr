@@ -16,64 +16,70 @@
                         <table class="table basic_table" width="100%" id='table_body'>
                             <thead>
                                 <tr style="border-bottom-style: inset;">
-                                    <t t-if="not col in ('one')">
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="5%"><strong>CODE</strong></td>
-                                        <td class="celdaTituloTabla" width="55%"><strong>ACCOUNT</strong></td>
+                                    <t t-if="not col in ('one','thirteen')">
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="5%">CODE</td>
+                                        <td class="celdaTituloTabla" width="55%">ACCOUNT</td>
                                     </t>
 
                                     <t t-if="col in ('one')">
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>CODE</strong></td>
-                                        <td class="celdaTituloTabla" width="70%"><strong>ACCOUNT</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="20%"><strong>BALANCE</strong></td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">CODE</td>
+                                        <td class="celdaTituloTabla" width="70%">ACCOUNT</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="20%">BALANCE</td>
                                     </t>
 
                                     <t t-if="col in ('two')">
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="20%"><strong>DEBIT</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="20%"><strong>CREDIT</strong></td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="20%">DEBIT</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="20%">CREDIT</td>
                                     </t>
 
                                     <t t-if="col in ('four')">
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>INIT. BAL.</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>DEBIT</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>CREDIT</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>BALANCE</strong></td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">INIT. BAL.</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">DEBIT</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">CREDIT</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">BALANCE</td>
                                     </t>
 
                                     <t t-if="col in ('five')">
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>INIT. BAL.</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>DEBIT</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>CREDIT</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>PERIOD</strong></td>
-                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%"><strong>BALANCE</strong></td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">INIT. BAL.</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">DEBIT</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">CREDIT</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">PERIOD</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">BALANCE</td>
                                     </t>
 
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('qtr',)"><strong>Q1</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('qtr',)"><strong>Q2</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('qtr',)"><strong>Q3</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('qtr',)"><strong>Q4</strong></td>
+                                    <t t-if="col in ('qtr')">
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">Q1</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">Q2</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">Q3</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">Q4</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="10%">YTD</td>
+                                    </t>
 
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>01</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>02</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>03</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>04</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>05</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>06</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>07</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>08</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>09</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>10</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>11</strong></td>
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('thirteen',)"><strong>12</strong></td>
-
-                                    <td class="celdaTituloTabla" style="text-align:right;" t-if="col in ('qtr', 'thirteen')"><strong>YTD</strong></td>
+                                    <t t-if="col in ('thirteen')">
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">CODE</td>
+                                        <td class="celdaTituloTabla" width="16%">ACCOUNT</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">01</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">02</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">03</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">04</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">05</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">06</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">07</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">08</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">09</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">10</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">11</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">12</td>
+                                        <td class="celdaTituloTabla" style="text-align:right;" width="6%">YTD</td>
+                                    </t>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="prueba" t-foreach="lines(data['form'])" t-as="line">
                                     <i>
-                                    <td class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td style="text-align:right;font-style:italic;">
                                         <t t-if="line['label'] and line['type'] != 'view'">
-                                            <span t-esc="line['code']"/>
+                                            <span t-esc="line['code']" class="celdaDetail"/>
                                         </t>
                                         <t t-if="line['label'] and line['type'] == 'view'">
                                             <span t-esc="line['code']" class="celdaDetailTitulo"/>
@@ -93,153 +99,153 @@
                                     </t>
                                     <t t-if="line['type'] != 'view'">
                                         <td style="font-style:italic;text-align:left;">
-                                            <span t-esc="line['name'].title()"/>
+                                            <span t-esc="line['name'].title()" class="celdaDetail"/>
                                         </td>
                                     </t>
                                     
 
-                                    <td t-if="col in ('four', 'five')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('four', 'five')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('balanceinit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('balanceinit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('balanceinit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('two', 'four', 'five')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('two', 'four', 'five')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('debit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('debit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('debit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('two', 'four', 'five')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('two', 'four', 'five')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('credit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('credit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('credit', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('five',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('five',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('ytd', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('ytd', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('ytd', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('one', 'four', 'five')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('one', 'four', 'five')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('balance', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('balance', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('balance', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('qtr', 'thirteen')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('qtr', 'thirteen')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal1', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal1', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal1', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('qtr', 'thirteen')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('qtr', 'thirteen')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal2', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal2', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal2', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('qtr', 'thirteen')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('qtr', 'thirteen')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal3', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal3', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal3', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('qtr', 'thirteen')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('qtr', 'thirteen')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal4', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal4', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal4', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('qtr', 'thirteen')" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('qtr', 'thirteen')" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal5', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal5', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal5', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('thirteen',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('thirteen',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal6', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal6', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal6', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('thirteen',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('thirteen',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal7', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal7', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal7', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('thirteen',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('thirteen',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal8', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal8', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal8', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('thirteen',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('thirteen',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal9', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal9', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal9', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('thirteen',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('thirteen',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal10', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal10', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal10', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('thirteen',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('thirteen',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal11', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal11', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal11', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('thirteen',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('thirteen',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal12', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal12', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal12', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
-                                    <td t-if="col in ('thirteen',)" class="celdaDetail" style="text-align:right;font-style:italic;">
+                                    <td t-if="col in ('thirteen',)" style="text-align:right;font-style:italic;">
                                         <t t-if="line['total'] and line['type'] == 'view'">
                                             <span t-esc="formatLang(line.get('bal13', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaTotal"/>
                                         </t>
                                         <t t-if="line['total'] and line['type'] != 'view'">
-                                            <span t-esc="formatLang(line.get('bal13', 0) * line.get('change_sign',1.0), digits=2, grouping=True)"/>
+                                            <span t-esc="formatLang(line.get('bal13', 0) * line.get('change_sign',1.0), digits=2, grouping=True)" class="celdaDetail"/>
                                         </t>
                                     </td>
                                 </tr>
