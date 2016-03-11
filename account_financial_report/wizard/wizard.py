@@ -52,6 +52,9 @@ class wizard_report(osv.osv_memory):
         'display_account_level': fields.integer('Up to level', help='Display accounts up to this level (0 to show all)'),
 
         'account_list': fields.many2many('account.account', 'rel_wizard_account', 'account_list', 'account_id', 'Root accounts', required=True),
+        'analytic_ids': fields.many2many(
+            'account.analytic.account', 'afr_analytic_rel', 'afr_record_wzd',
+            'analytic_id', 'Consolidated Analytic Accounts'),
 
         'fiscalyear': fields.many2one('account.fiscalyear', 'Fiscal year', help='Fiscal Year for this report', required=True),
         'periods': fields.many2many('account.period', 'rel_wizard_period', 'wizard_id', 'period_id', 'Periods', help='All periods in the fiscal year if empty'),
@@ -262,6 +265,11 @@ class wizard_report(osv.osv_memory):
         data['ids'] = context.get('active_ids', [])
         data['model'] = context.get('active_model', 'ir.ui.menu')
         data['form'] = self.read(cr, uid, ids[0])
+        brw = self.browse(cr, uid, ids[0])
+
+        analytic = [an.id for an in brw.analytic_ids]
+        if analytic:
+            context['afr_analytic'] = analytic
 
         if data['form']['filter'] == 'byperiod':
             del data['form']['date_from']
@@ -313,6 +321,10 @@ class wizard_report(osv.osv_memory):
         if data['form']['columns'] == 'thirteen':
             name = 'afr.13cols'
 
-        return {'type': 'ir.actions.report.xml', 'report_name': name, 'datas': data}
+        return {
+            'context': context,
+            'type': 'ir.actions.report.xml',
+            'report_name': name,
+            'datas': data}
 
 wizard_report()

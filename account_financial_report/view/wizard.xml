@@ -62,29 +62,45 @@
                         <newline/>
                     </group>
                 </group>
-                <group >
-                    <group string="Accounts to Include">
-                        <field name="account_list" nolabel="1"  domain="[('company_id','=',company_id)]">
-                            <tree>
-                                <field name='code'/>
-                                <field name='name'/>
-                                <field name='type'/>
-                                <field name='level'/>
-                            </tree>
-                        </field>
+                <group cols='4'>
+                    <group string="Accounts to Include" colspan="1">
+                        <notebook colspan="2">
+                            <page string="Financial Accounts">
+                                <field name="account_list" nolabel="1"  domain="[('company_id','=',company_id)]">
+                                    <tree>
+                                        <field name='code'/>
+                                        <field name='name'/>
+                                        <field name='type'/>
+                                        <field name='level'/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Analytic Accounts">
+                                <field name="analytic_ids" nolabel="1"  domain="[('company_id','=',company_id)]">
+                                    <tree>
+                                        <field name='code'/>
+                                        <field name='name'/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </group>
-                    <group string="Periods to Include">
-                        <field 
-                            name="periods" 
-                            nolabel="1" 
-                            domain="[('fiscalyear_id','=',fiscalyear),('special','=',False),('company_id','=',company_id)]"
-                             attrs="{'readonly':[('columns','in',('qtr','thirteen'))],}">
-                            <tree>
-                                <field name='code'/>
-                                <field name='name'/>
-                                <field name='state'/>
-                            </tree>
-                        </field>
+                    <group string="Periods to Include" colspan="1">
+                        <notebook colspan="2">
+                            <page string="Periods">
+                                <field
+                                    name="periods"
+                                    nolabel="1"
+                                    domain="[('fiscalyear_id','=',fiscalyear),('special','=',False),('company_id','=',company_id)]"
+                                     attrs="{'readonly':[('columns','in',('qtr','thirteen'))],}">
+                                    <tree>
+                                        <field name='code'/>
+                                        <field name='name'/>
+                                        <field name='state'/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </group>
                 </group>
                 <group string="Account's Sign Conventions">

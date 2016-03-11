@@ -25,3 +25,4 @@
 
 import account_financial_report
 import res_company
+import account
