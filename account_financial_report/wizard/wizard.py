@@ -269,7 +269,10 @@ class wizard_report(osv.osv_memory):
 
         analytic = [an.id for an in brw.analytic_ids]
         if analytic:
-            context['afr_analytic'] = analytic
+            if self.pool.get('account.analytic.plan.instance.line'):
+                context['afr_analytics'] = analytic
+            else:
+                context['afr_analytic'] = analytic
 
         if data['form']['filter'] == 'byperiod':
             del data['form']['date_from']
