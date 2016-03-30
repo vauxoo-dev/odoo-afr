@@ -61,8 +61,20 @@ class account_balance(report_sxw.rml_parse):
             'get_month': self.get_month,
             'exchange_name': self.exchange_name,
             'get_vat_by_country': self.get_vat_by_country,
+            'get_analytics': self._get_analytics,
         })
         self.context = context
+
+    def _get_analytics(self, form):
+        res = []
+        if form.get('analytic_ids', False):
+            self.cr.execute('''
+                SELECT code, name
+                FROM account_analytic_account
+                WHERE id IN %s
+                ''', (tuple(form['analytic_ids']),))
+            res = ['[%s] %s' % (cc, nn) for cc, nn in self.cr.fetchall()]
+        return ', '.join(res)
 
     def get_vat_by_country(self, form):
         """
