@@ -88,6 +88,22 @@
     <images/>
     <story>
         <para>[[setLang(user.lang)]]</para>
+        <blockTable colWidths="41cm" style="BODY" repeatRows="1">
+            <tr noRowsplits="1">
+                <td>
+                    <para style="TITLES">[[get_analytics(data['form']) and 'ANALYTIC ACCOUNTS' or removeParentNode('blockTable') ]]</para>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <para style="TITLES">
+                        <font>[[ setTag('para','para',{'fontName':"Courier"}) ]]</font>
+                        <i>[[ get_analytics(data['form']) ]]</i>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+
         <blockTable colWidths="2.0cm,6.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm,2.5cm" style="BODY" repeatRows="1">
             <tr noRowsplits="1">
                 <td>
