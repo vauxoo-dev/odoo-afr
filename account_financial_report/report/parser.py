@@ -1,21 +1,6 @@
 class AccountBalance(report_sxw.rml_parse):
     _name = 'afr.parser'
 
-    def __init__(self, cr, uid, name, context):
-        super(AccountBalance, self).__init__(cr, uid, name, context)
-        self.to_currency_id = None
-        self.from_currency_id = None
-        self.localcontext.update({
-            'getattr': getattr,
-            'time': time,
-            'lines': self.lines,
-            'get_informe_text': self.get_informe_text,
-            'get_month': self.get_month,
-            'exchange_name': self.exchange_name,
-            'get_vat_by_country': self.get_vat_by_country,
-        })
-        self.context = context
-
     def get_vat_by_country(self, form):
         """
         Return the vat of the partner by country
