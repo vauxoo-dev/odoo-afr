@@ -33,41 +33,4 @@ class AccountBalance(report_sxw.rml_parse):
                         ids2.append([aa_brw.id, True, True, aa_brw])
             return ids2
 
-        #######################################################################
-        # CONTEXT FOR ENDIND BALANCE                                          #
-        #######################################################################
-        def _ctx_end(ctx):
-            ctx_end = ctx
-            ctx_end['filter'] = form.get('filter', 'all')
-            ctx_end['fiscalyear'] = fiscalyear.id
-
-            if form['filter'] in ['byperiod', 'all']:
-                ctx_end['periods'] = period_obj.search(
-                    self.cr, self.uid,
-                    [('id', 'in', form['periods'] or
-                      ctx_end.get('periods', False)),
-                     ('special', '=', False)])
-
-            return ctx_end.copy()
-
-        #######################################################################
-        # CONTEXT FOR INITIAL BALANCE                                         #
-        #######################################################################
-
-        def _ctx_init(ctx):
-            ctx_init = self.context.copy()
-            ctx_init['filter'] = form.get('filter', 'all')
-            ctx_init['fiscalyear'] = fiscalyear.id
-
-            if form['filter'] in ['byperiod', 'all']:
-                ctx_init['periods'] = form['periods']
-                date_start = min(
-                    [period.date_start for period in
-                     period_obj.browse(self.cr, self.uid,
-                                       ctx_init['periods'])])
-                ctx_init['periods'] = period_obj.search(
-                    self.cr, self.uid, [('fiscalyear_id', '=', fiscalyear.id),
-                                        ('date_stop', '<=', date_start)])
-
-            return ctx_init.copy()
 
