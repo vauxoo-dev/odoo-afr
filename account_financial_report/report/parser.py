@@ -22,11 +22,6 @@ class AccountBalance(report_sxw.rml_parse):
                     ids2 += _get_children_and_consol(
                         cr, uid, [x.id for x in aa_brw.child_id], level,
                         context, change_sign=change_sign)
-                else:
-                    if change_sign:
-                        ids2.append(aa_brw.id)
-                    else:
-                        ids2.append([aa_brw.id, True, True, aa_brw])
             return ids2
 
 
