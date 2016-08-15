@@ -903,6 +903,24 @@ class AccountBalance(report_sxw.rml_parse):
             tot_crd, tot_ytd, tot_eje, ctx_i, ctx_end, res, tot, all_ap,
             credit_account_ids)
 
+    def get_account_dict(self, idx, aa_id, credit_account_ids):
+        """Return a dictionary per account obtained from the account_ids"""
+
+        res = {
+            'id': idx,
+            'type': aa_id[3].type,
+            'code': aa_id[3].code,
+            'name': (aa_id[2] and not aa_id[1]) and 'TOTAL %s' %
+            (aa_id[3].name.upper()) or aa_id[3].name,
+            'parent_id': aa_id[3].parent_id and aa_id[3].parent_id.id,
+            'level': aa_id[3].level,
+            'label': aa_id[1],
+            'total': aa_id[2],
+            'change_sign': credit_account_ids and
+            (idx in credit_account_ids and -1 or 1) or 1
+        }
+        return res
+
     def _compute_line(
             self, account_ids, delete_cons, form, tot_bal1, tot_bal2, tot_bal3,
             tot_bal4, tot_bal5, tot_bal6, tot_bal7, tot_bal8, tot_bal9,
@@ -927,19 +945,7 @@ class AccountBalance(report_sxw.rml_parse):
             if any([to_display, to_consolidate]):
                 continue
 
-            res = {
-                'id': idx,
-                'type': aa_id[3].type,
-                'code': aa_id[3].code,
-                'name': (aa_id[2] and not aa_id[1]) and 'TOTAL %s' %
-                (aa_id[3].name.upper()) or aa_id[3].name,
-                'parent_id': aa_id[3].parent_id and aa_id[3].parent_id.id,
-                'level': aa_id[3].level,
-                'label': aa_id[1],
-                'total': aa_id[2],
-                'change_sign': credit_account_ids and
-                (idx in credit_account_ids and -1 or 1) or 1
-            }
+            res = self.get_account_dict(idx, aa_id, credit_account_ids)
 
             self.get_line_values(idx, res, form, all_ap)
 
