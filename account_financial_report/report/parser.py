@@ -47,6 +47,7 @@ class AccountBalance(report_sxw.rml_parse):
             'get_month': self.get_month,
             'exchange_name': self.exchange_name,
             'get_vat_by_country': self.get_vat_by_country,
+            'get_account_dict': self.get_account_dict,
         })
         self.context = context
 
@@ -905,7 +906,6 @@ class AccountBalance(report_sxw.rml_parse):
 
     def get_account_dict(self, idx, aa_id, credit_account_ids):
         """Return a dictionary per account obtained from the account_ids"""
-
         res = {
             'id': idx,
             'type': aa_id[3].type,
@@ -1097,7 +1097,9 @@ report_sxw.report_sxw(
     'wizard.report',
     'account_financial_report/report/balance_full_4_cols.rml',
     parser=AccountBalance,
-    header=False)
+    header=False,
+    register=False)
+
 
 report_sxw.report_sxw(
     'report.afr.rml.analytic.ledger',
