@@ -1097,8 +1097,7 @@ report_sxw.report_sxw(
     'wizard.report',
     'account_financial_report/report/balance_full_4_cols.rml',
     parser=AccountBalance,
-    header=False,
-    register=False)
+    header=False)
 
 
 report_sxw.report_sxw(
