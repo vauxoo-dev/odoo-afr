@@ -33,7 +33,6 @@ from openerp.osv import osv
 
 
 class AccountBalance(report_sxw.rml_parse):
-    _name = 'afr.parser'
 
     def __init__(self, cr, uid, name, context):
         super(AccountBalance, self).__init__(cr, uid, name, context)
@@ -43,11 +42,29 @@ class AccountBalance(report_sxw.rml_parse):
             'getattr': getattr,
             'time': time,
             'lines': self.lines,
+            '_compute_line': self._compute_line,
             'get_informe_text': self.get_informe_text,
             'get_month': self.get_month,
+            'exchange': self.exchange,
             'exchange_name': self.exchange_name,
+            'get_company_currency': self.get_company_currency,
+            'get_company_accounts': self.get_company_accounts,
+            '_get_partner_balance': self._get_partner_balance,
+            '_get_analytic_ledger': self._get_analytic_ledger,
+            '_get_journal_ledger': self._get_journal_ledger,
+            '_get_children_and_consol': self._get_children_and_consol,
+            '_ctx_end': self._ctx_end,
+            '_ctx_init': self._ctx_init,
+            'zfunc': self.zfunc,
+            '_getting_accounts': self._getting_accounts,
+            '_process_period': self._process_period,
+            'test_include': self.test_include,
+            'check_accounts_to_display': self.check_accounts_to_display,
+            'include_ledger': self.include_ledger,
+            'get_line_values': self.get_line_values,
+            'get_limit': self.get_limit,
+            'get_all_accounts_per_period': self.get_all_accounts_per_period,
             'get_vat_by_country': self.get_vat_by_country,
-            'get_account_dict': self.get_account_dict,
         })
         self.context = context
 
@@ -904,23 +921,6 @@ class AccountBalance(report_sxw.rml_parse):
             tot_crd, tot_ytd, tot_eje, ctx_i, ctx_end, res, tot, all_ap,
             credit_account_ids)
 
-    def get_account_dict(self, idx, aa_id, credit_account_ids):
-        """Return a dictionary per account obtained from the account_ids"""
-        res = {
-            'id': idx,
-            'type': aa_id[3].type,
-            'code': aa_id[3].code,
-            'name': (aa_id[2] and not aa_id[1]) and 'TOTAL %s' %
-            (aa_id[3].name.upper()) or aa_id[3].name,
-            'parent_id': aa_id[3].parent_id and aa_id[3].parent_id.id,
-            'level': aa_id[3].level,
-            'label': aa_id[1],
-            'total': aa_id[2],
-            'change_sign': credit_account_ids and
-            (idx in credit_account_ids and -1 or 1) or 1
-        }
-        return res
-
     def _compute_line(
             self, account_ids, delete_cons, form, tot_bal1, tot_bal2, tot_bal3,
             tot_bal4, tot_bal5, tot_bal6, tot_bal7, tot_bal8, tot_bal9,
@@ -945,7 +945,19 @@ class AccountBalance(report_sxw.rml_parse):
             if any([to_display, to_consolidate]):
                 continue
 
-            res = self.get_account_dict(idx, aa_id, credit_account_ids)
+            res = {
+                'id': idx,
+                'type': aa_id[3].type,
+                'code': aa_id[3].code,
+                'name': (aa_id[2] and not aa_id[1]) and 'TOTAL %s' %
+                (aa_id[3].name.upper()) or aa_id[3].name,
+                'parent_id': aa_id[3].parent_id and aa_id[3].parent_id.id,
+                'level': aa_id[3].level,
+                'label': aa_id[1],
+                'total': aa_id[2],
+                'change_sign': credit_account_ids and
+                (idx in credit_account_ids and -1 or 1) or 1
+            }
 
             self.get_line_values(idx, res, form, all_ap)
 
@@ -1097,7 +1109,8 @@ report_sxw.report_sxw(
     'wizard.report',
     'account_financial_report/report/balance_full_4_cols.rml',
     parser=AccountBalance,
-    header=False)
+    header=False,
+    register=False)
 
 
 report_sxw.report_sxw(
